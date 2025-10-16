@@ -7,8 +7,8 @@
   },
   "lib/chainlink-brownie-contracts": {
     "tag": {
-      "name": "0.4.0",
-      "rev": "f280c893fd8795e1d18e945eca72e9b17299793e"
+      "name": "1.2.0",
+      "rev": "6e324d8ad9fbb5519186ad9f1eaf99704de4c915"
     }
   },
   "lib/forge-deploy": {
