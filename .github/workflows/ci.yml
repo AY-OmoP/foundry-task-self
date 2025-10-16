@@ -13,45 +13,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ⚡ Cache Foundry installation
-      - name: Cache Foundry
-        id: cache-foundry
-        uses: actions/cache@v4
-        with:
-          path: ~/.foundry
-          key: ${{ runner.os }}-foundry-${{ hashFiles('**/foundry.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-foundry-
-
       - name: Install Foundry
-        if: steps.cache-foundry.outputs.cache-hit != 'true'
         shell: bash
         run: |
           curl -L https://foundry.paradigm.xyz | bash
           echo "/home/runner/.foundry/bin" >> $GITHUB_PATH
           foundryup
 
-      # Ensure PATH works even after cache restore
-      - name: Ensure Foundry in PATH
-        run: echo "/home/runner/.foundry/bin" >> $GITHUB_PATH
-
       - name: Verify Foundry installation
         run: forge --version
 
-      # ⚡ Cache build artifacts (optional but useful)
-      - name: Cache build artifacts
-        uses: actions/cache@v4
-        with:
-          path: |
-            foundry-task-self/out
-            foundry-task-self/cache
-          key: ${{ runner.os }}-foundry-build-${{ hashFiles('foundry-task-self/**') }}
-          restore-keys: |
-            ${{ runner.os }}-foundry-build-
+      - name: Install dependencies
+        working-directory: ./foundry-task-self
+        run: |
+          forge install foundry-rs/forge-std --no-commit
+          forge install Cyfrin/foundry-devops --no-commit
+          forge install smartcontractkit/chainlink-brownie-contracts --no-commit
 
       - name: Build contracts
         working-directory: ./foundry-task-self
-        run: forge build
+        run: forge build --sizes
 
       - name: Run tests
         working-directory: ./foundry-task-self
