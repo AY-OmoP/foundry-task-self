@@ -20,7 +20,9 @@ jobs:
           foundryup
 
       - name: Build contracts
+        working-directory: ./foundry-task-self
         run: forge build
 
       - name: Run tests
+        working-directory: ./foundry-task-self
         run: forge test -vvv
