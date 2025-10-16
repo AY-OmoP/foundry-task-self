@@ -25,6 +25,7 @@ remappings = [
   "@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/",
   "foundry-devops/=lib/foundry-devops/src/",
     "forge-std/=lib/forge-std/src/",
+    "@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/src/v0.8/",
   "@chainlink/contracts/=lib/chainlink/contracts/"
 ]
 
