@@ -1,0 +1,20 @@
+{
+  "name": "foundry-task-self",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "fix-audit": "./scripts/fix-safe-audit.sh",
+    "check-deps": "node scripts/check-deps.js",
+    "start": "next start",
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "@metamask/sdk": "0.33.1",
+    "@safe-global/safe-apps-sdk": "^9.0.0",
+    "@wagmi/connectors": "^4.3.10",
+    "@wagmi/core": "^2.9.8",
+    "pino": "10.0.0",
+    "wagmi": "^2.18.1",
+    "ws": "8.18.3"
+  }
+}

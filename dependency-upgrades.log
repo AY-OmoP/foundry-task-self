@@ -1,0 +1,42 @@
+2025-10-16T10:26:12.090Z - 🔍 Starting dependency check...
+2025-10-16T10:26:13.243Z - ws@8.18.3 — ✅ OK
+2025-10-16T10:26:13.958Z - pino@10.0.0 — ✅ OK
+2025-10-16T10:26:14.665Z - @metamask/sdk@0.33.1 — ✅ OK
+2025-10-16T10:26:15.359Z - wagmi@2.18.1 — ✅ OK
+2025-10-16T10:26:16.035Z - @safe-global/safe-apps-sdk@9.0.0 — ✅ OK
+2025-10-16T10:26:16.035Z - 
+📊 Dependency check summary:
+2025-10-16T10:26:16.035Z - ✅ OK: ws, pino, @metamask/sdk, wagmi, @safe-global/safe-apps-sdk
+2025-10-16T10:26:16.035Z - ⚠️  Upgraded: None
+2025-10-16T10:26:16.036Z - ❌ Failed: None
+2025-10-16T10:26:16.036Z - ⚠️  Missing: None
+2025-10-16T10:26:16.036Z - ✅ Dependency check complete.
+
+2025-10-16T10:26:16.160Z - 🔍 Starting dependency check...
+2025-10-16T10:26:16.873Z - ws@8.18.3 — ✅ OK
+2025-10-16T10:26:17.656Z - pino@10.0.0 — ✅ OK
+2025-10-16T10:26:18.356Z - @metamask/sdk@0.33.1 — ✅ OK
+2025-10-16T10:26:19.040Z - wagmi@2.18.1 — ✅ OK
+2025-10-16T10:26:19.785Z - @safe-global/safe-apps-sdk@9.0.0 — ✅ OK
+2025-10-16T10:26:19.786Z - 
+📊 Dependency check summary:
+2025-10-16T10:26:19.786Z - ✅ OK: ws, pino, @metamask/sdk, wagmi, @safe-global/safe-apps-sdk
+2025-10-16T10:26:19.786Z - ⚠️  Upgraded: None
+2025-10-16T10:26:19.787Z - ❌ Failed: None
+2025-10-16T10:26:19.787Z - ⚠️  Missing: None
+2025-10-16T10:26:19.787Z - ✅ Dependency check complete.
+
+2025-10-16T10:27:53.073Z - 🔍 Starting strict dependency check...
+2025-10-16T10:27:54.215Z - ws@8.18.3 — ✅ OK
+2025-10-16T10:27:55.008Z - pino@10.0.0 — ✅ OK
+2025-10-16T10:27:55.769Z - @metamask/sdk@0.33.1 — ✅ OK
+2025-10-16T10:27:56.427Z - wagmi@2.18.1 — ✅ OK
+2025-10-16T10:27:57.165Z - @safe-global/safe-apps-sdk@9.0.0 — ✅ OK
+2025-10-16T10:27:57.166Z - 
+📊 Strict dependency check summary:
+2025-10-16T10:27:57.166Z - ✅ OK: ws, pino, @metamask/sdk, wagmi, @safe-global/safe-apps-sdk
+2025-10-16T10:27:57.166Z - ⚠️  Upgraded: None
+2025-10-16T10:27:57.167Z - ❌ Failed: None
+2025-10-16T10:27:57.167Z - ⚠️  Missing: None
+2025-10-16T10:27:57.167Z - ✅ Dependency check complete.
+

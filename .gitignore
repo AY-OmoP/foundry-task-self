@@ -21,3 +21,4 @@ lib/*
 
 .DS_Store
 zkout/
+node_modules
