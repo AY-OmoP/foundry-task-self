@@ -1,4 +1,4 @@
-name: Foundry CI Bulletproof
+name: Foundry CI
 
 on:
   push:
@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1 — Checkout your code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2 — Install Foundry (official installer)
       - name: Install Foundry
         shell: bash
         run: |
@@ -20,9 +22,11 @@ jobs:
           echo "/home/runner/.foundry/bin" >> $GITHUB_PATH
           foundryup
 
+      # Step 3 — Verify Foundry is installed
       - name: Verify Foundry installation
         run: forge --version
 
+      # Step 4 — Install dependencies (if any)
       - name: Install dependencies
         working-directory: ./foundry-task-self
         run: |
@@ -30,10 +34,13 @@ jobs:
           forge install Cyfrin/foundry-devops --no-commit
           forge install smartcontractkit/chainlink-brownie-contracts --no-commit
 
+      # Step 5 — Build contracts
       - name: Build contracts
         working-directory: ./foundry-task-self
-        run: forge build --sizes
+        run: forge build
 
+      # Step 6 — Run tests
       - name: Run tests
         working-directory: ./foundry-task-self
         run: forge test -vvv
+
