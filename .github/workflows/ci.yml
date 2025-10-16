@@ -1,4 +1,4 @@
-name: Foundry CI
+name: Foundry CI Robust
 
 on:
   push:
@@ -10,12 +10,11 @@ on:
 
 jobs:
   build-and-test:
-    # Change to windows-latest if you prefer Windows
     runs-on: macos-latest
 
     steps:
-      # 1. Checkout code
-      - name: Checkout repository
+      # 1. Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       # 2. Install Foundry
@@ -23,30 +22,20 @@ jobs:
         run: |
           curl -L https://foundry.paradigm.xyz | bash
           foundryup
-
-      # 3. Add Foundry binaries to PATH
-      - name: Set PATH for Foundry
-        run: |
           echo "$HOME/.foundry/bin" >> $GITHUB_PATH
 
-      # 4. Verify installation
+      # 3. Verify Foundry installation
       - name: Verify Foundry
         run: |
+          echo "Current PATH: $PATH"
+          which forge
           forge --version
           cast --version
 
-      # 5. Optional: Install dependencies
-      # Uncomment and modify if you have other dependencies
-      # - name: Install dependencies
-      #   run: |
-      #     npm install
-      #     pip install -r requirements.txt
-
-      # 6. Build the project
+      # 4. Build the project
       - name: Build project
         run: forge build
 
-      # 7. Run tests
+      # 5. Run tests (simplified)
       - name: Run tests
-        # Remove --fork-url if you don't need forked mainnet tests
-        run: forge test --fork-url https://eth-mainnet.alchemyapi.io/v2/YOUR_ALCHEMY_KEY
+        run: forge test
