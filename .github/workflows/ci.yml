@@ -1,4 +1,4 @@
-name: Foundry CI Robust
+name: Foundry CI Bulletproof
 
 on:
   push:
@@ -13,29 +13,23 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # 1. Checkout repository
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Install Foundry
-      - name: Install Foundry
+      - name: Install Foundry and run build/tests
+        # Run all Foundry commands in a single step to avoid PATH issues
         run: |
           curl -L https://foundry.paradigm.xyz | bash
           foundryup
-          echo "$HOME/.foundry/bin" >> $GITHUB_PATH
+          export PATH="$HOME/.foundry/bin:$PATH"
 
-      # 3. Verify Foundry installation
-      - name: Verify Foundry
-        run: |
-          echo "Current PATH: $PATH"
+          # Verify Foundry is accessible
           which forge
           forge --version
           cast --version
 
-      # 4. Build the project
-      - name: Build project
-        run: forge build
+          # Build project
+          forge build
 
-      # 5. Run tests (simplified)
-      - name: Run tests
-        run: forge test
+          # Run tests
+          forge test
