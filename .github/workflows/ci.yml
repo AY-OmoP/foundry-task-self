@@ -2,7 +2,7 @@ name: Foundry CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
 
 jobs:
@@ -10,36 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1 — Checkout your code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2 — Install Foundry (official installer)
+      # 🧱 Install Foundry (run foundryup directly by path)
       - name: Install Foundry
-        shell: bash
         run: |
           curl -L https://foundry.paradigm.xyz | bash
-          echo "/home/runner/.foundry/bin" >> $GITHUB_PATH
-          foundryup
+          bash -i -c "~/.foundry/bin/foundryup"
+          echo "$HOME/.foundry/bin" >> $GITHUB_PATH
 
-      # Step 3 — Verify Foundry is installed
-      - name: Verify Foundry installation
-        run: forge --version
-
-      # Step 4 — Install dependencies (if any)
-      - name: Install dependencies
-        working-directory: ./foundry-task-self
+      - name: Verify Foundry
         run: |
-          forge install foundry-rs/forge-std --no-commit
-          forge install Cyfrin/foundry-devops --no-commit
-          forge install smartcontractkit/chainlink-brownie-contracts --no-commit
+          ~/.foundry/bin/forge --version
+          ~/.foundry/bin/cast --version
 
-      # Step 5 — Build contracts
-      - name: Build contracts
-        working-directory: ./foundry-task-self
-        run: forge build
+      - name: Install dependencies
+        run: |
+          ~/.foundry/bin/forge install foundry-rs/forge-std --no-commit
+          ~/.foundry/bin/forge install smartcontractkit/chainlink-brownie-contracts --no-commit
+          ~/.foundry/bin/forge install Cyfrin/foundry-devops --no-commit
 
-      # Step 6 — Run tests
-      - name: Run tests
-        working-directory: ./foundry-task-self
-        run: forge test -vvv
+      - name: Build and Test
+        run: |
+          ~/.foundry/bin/forge build --sizes
+          ~/.foundry/bin/forge test -vvv
