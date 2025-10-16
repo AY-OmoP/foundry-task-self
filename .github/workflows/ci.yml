@@ -1,5 +1,6 @@
-name: CI
+name: Foundry CI
 
+# Trigger workflow on pushes or pull requests to main
 on:
   push:
     branches:
@@ -9,25 +10,39 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository with submodules
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
+  build-and-test:
+    # Use macOS environment; change to windows-latest if needed
+    runs-on: macos-latest
 
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Install Foundry
       - name: Install Foundry
         run: |
           curl -L https://foundry.paradigm.xyz | bash
           foundryup
 
-      - name: Install dependencies
-        run: forge install
+      # Step 3: Verify Foundry installation
+      - name: Verify Foundry
+        run: |
+          forge --version
+          cast --version
 
-      - name: Build
+      # Step 4: Install dependencies if any (optional)
+      # Uncomment and modify if you have other dependencies
+      # - name: Install dependencies
+      #   run: |
+      #     npm install
+      #     pip install -r requirements.txt
+
+      # Step 5: Build project
+      - name: Build project
         run: forge build
 
-      - name: Test
-        run: forge test
-
+      # Step 6: Run tests
+      - name: Run tests
+        run: forge test --fork-url https://eth-mainnet.alchemyapi.io/v2/YOUR_ALCHEMY_KEY
+        # Remove --fork-url if not doing forked tests
