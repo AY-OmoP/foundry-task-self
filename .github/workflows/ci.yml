@@ -1,6 +1,5 @@
 name: Foundry CI
 
-# Trigger workflow on pushes or pull requests to main
 on:
   push:
     branches:
@@ -11,38 +10,43 @@ on:
 
 jobs:
   build-and-test:
-    # Use macOS environment; change to windows-latest if needed
+    # Change to windows-latest if you prefer Windows
     runs-on: macos-latest
 
     steps:
-      # Step 1: Checkout repository
-      - name: Checkout code
+      # 1. Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Install Foundry
+      # 2. Install Foundry
       - name: Install Foundry
         run: |
           curl -L https://foundry.paradigm.xyz | bash
           foundryup
 
-      # Step 3: Verify Foundry installation
+      # 3. Add Foundry binaries to PATH
+      - name: Set PATH for Foundry
+        run: |
+          echo "$HOME/.foundry/bin" >> $GITHUB_PATH
+
+      # 4. Verify installation
       - name: Verify Foundry
         run: |
           forge --version
           cast --version
 
-      # Step 4: Install dependencies if any (optional)
+      # 5. Optional: Install dependencies
       # Uncomment and modify if you have other dependencies
       # - name: Install dependencies
       #   run: |
       #     npm install
       #     pip install -r requirements.txt
 
-      # Step 5: Build project
+      # 6. Build the project
       - name: Build project
         run: forge build
 
-      # Step 6: Run tests
+      # 7. Run tests
       - name: Run tests
+        # Remove --fork-url if you don't need forked mainnet tests
         run: forge test --fork-url https://eth-mainnet.alchemyapi.io/v2/YOUR_ALCHEMY_KEY
-        # Remove --fork-url if not doing forked tests
