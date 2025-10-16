@@ -17,13 +17,13 @@ contract IntegrationTest is Test {
     }
 
     function testUserCanFundInteraction() public {
-    address USER = makeAddr("user");
-    vm.deal(USER, 1 ether); // 👈 Give the user ETH
+        address USER = makeAddr("user");
+        vm.deal(USER, 1 ether); // 👈 Give the user ETH
 
-    vm.prank(USER);
-    fundMe.fund{value: 0.1 ether}();
+        vm.prank(USER);
+        fundMe.fund{value: 0.1 ether}();
 
-    uint256 fundedAmount = fundMe.addressToAmountFunded(USER);
-    assertEq(fundedAmount, 0.1 ether);
-}
+        uint256 fundedAmount = fundMe.addressToAmountFunded(USER);
+        assertEq(fundedAmount, 0.1 ether);
+    }
 }

@@ -26,16 +26,12 @@ contract HelperConfig is Script {
 
     function getSepoliaEthConfig() internal pure returns (NetworkConfig memory) {
         // Chainlink ETH/USD price feed (Sepolia)
-        return NetworkConfig({
-            priceFeed: 0x694AA1769357215DE4FAC081bf1f309aDC325306
-        });
+        return NetworkConfig({priceFeed: 0x694AA1769357215DE4FAC081bf1f309aDC325306});
     }
 
     function getMainnetEthConfig() internal pure returns (NetworkConfig memory) {
         // Chainlink ETH/USD price feed (Mainnet)
-        return NetworkConfig({
-            priceFeed: 0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419
-        });
+        return NetworkConfig({priceFeed: 0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419});
     }
 
     function getOrCreateAnvilEthConfig() internal returns (NetworkConfig memory) {

@@ -9,7 +9,6 @@ import {FundMe} from "../src/FundMe.sol";
 
 /// @notice Example interaction script for your FundMe contract
 contract Interactions is Script {
-
     /// @notice Adds funds to the latest deployed FundMe contract
     function fundFundMe() public {
         // Get the most recent FundMe deployment for the current chain

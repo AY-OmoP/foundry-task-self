@@ -8,7 +8,6 @@ import {ZkSyncChainChecker} from "foundry-devops/ZkSyncChainChecker.sol";
 import {FoundryZkSyncChecker} from "foundry-devops/FoundryZkSyncChecker.sol";
 
 contract ZkSyncDevOpsTest is Test, ZkSyncChainChecker, FoundryZkSyncChecker {
-
     /// @notice This test checks that the ZkSync chain fails when `skipZkSync` is used.
     function testZkSyncChainFails() public skipZkSync {
         address ripemd = address(uint160(3));

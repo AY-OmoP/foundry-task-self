@@ -5,7 +5,8 @@ import "forge-std/Test.sol";
 import {FundMe} from "src/FundMe.sol";
 import {MockV3Aggregator} from "test/mocks/MockV3Aggregator.sol";
 
-contract FundMeTest is Test {  // ✅ renamed from FundMe -> FundMeTest
+contract FundMeTest is Test {
+    // ✅ renamed from FundMe -> FundMeTest
     FundMe fundMe;
     MockV3Aggregator mockPriceFeed;
 

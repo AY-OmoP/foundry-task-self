@@ -18,10 +18,7 @@ library PriceConverter {
     /**
      * @dev Converts an ETH amount to USD using the price feed.
      */
-    function getConversionRate(
-        uint256 ethAmount,
-        AggregatorV3Interface priceFeed
-    ) internal view returns (uint256) {
+    function getConversionRate(uint256 ethAmount, AggregatorV3Interface priceFeed) internal view returns (uint256) {
         uint256 ethPrice = getPrice(priceFeed);
         return (ethPrice * ethAmount) / 1e18;
     }

@@ -14,7 +14,10 @@ docs/
 .env
 
 broadcast/
-lib/
+# Ignore all contents of lib except submodules
+lib/*
+!lib/chainlink
+!lib/chainlink-brownie-contracts
 
 .DS_Store
 zkout/
