@@ -14,10 +14,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Foundry
+        shell: bash
         run: |
           curl -L https://foundry.paradigm.xyz | bash
-          export PATH="$PATH:/home/runner/.foundry/bin"
+          echo "/home/runner/.foundry/bin" >> $GITHUB_PATH
           foundryup
+
+      - name: Verify Foundry installation
+        run: forge --version
 
       - name: Build contracts
         working-directory: ./foundry-task-self
