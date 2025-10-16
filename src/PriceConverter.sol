@@ -3,6 +3,7 @@ pragma solidity ^0.8.21;
 
 // ✅ Use only Chainlink's official interface
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 library PriceConverter {
     /**
